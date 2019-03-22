@@ -1,7 +1,7 @@
 import React from 'react';
 import { AppRegistry, View } from 'react-native';
-import Header from './src/components/Header';
-import ComponentList from './src/components/ComponentList';
+import Header from './src/Header';
+import ComponentList from './src/ComponentList';
 
 const App = () => (
 	<View style={{ flex:1 }}>
