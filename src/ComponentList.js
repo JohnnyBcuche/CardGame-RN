@@ -43,10 +43,12 @@ class ComponentList extends Component {
 			}
 			card.value = parseInt(card.value, 10);
 				if (prevCard < card.value) {
-				console.log('win')
-				} else (
-				console.log('lose')
-				)
+					console.log('win (' + card.value + ' > ' + prevCard + ')')
+				} else if (prevCard === card.value) {
+					console.log('equal (' + card.value + ' = ' + prevCard + ')')
+				} else {
+					console.log('lose (' + card.value + ' < ' + prevCard + ')')
+				}
 				this.setState({ card: card })
 				console.log(card.value)
 			})
@@ -80,10 +82,12 @@ class ComponentList extends Component {
 			}
 			card.value = parseInt(card.value, 10);
 				if (prevCard > card.value) {
-				console.log('win')
-				} else (
-				console.log('lose')
-				)
+					console.log('win (' + card.value + ' < ' + prevCard + ')')
+				} else if (prevCard === card.value) {
+					console.log('equal (' + card.value + ' = ' + prevCard + ')')
+				} else {
+					console.log('lose (' + card.value + ' > ' + prevCard + ')')
+				}
 				this.setState({ card: card })
 				console.log(card.value)
 			})
@@ -98,8 +102,9 @@ class ComponentList extends Component {
 		return (
 			<ScrollView>
 			<Card>
-				<Text>{this.state.deck_id}</Text>
-				<Text>{this.state.card.value}</Text>
+				<CardSection>
+					<Text style={styles.text}>{this.state.card.value}</Text>
+				</CardSection>
 
 				<CardSection>
 					<Image 
@@ -128,9 +133,12 @@ class ComponentList extends Component {
 const styles = StyleSheet.create({
   img: {
     height: 314,
-    width: 226,
-    justifyContent: 'center',
-    alignItems: 'center'
+    width: 226
+  },
+  text: {
+  	fontSize: 22,
+  	color: '#E2CF00',
+  	justifyContent: 'center'
   }
 });
 
