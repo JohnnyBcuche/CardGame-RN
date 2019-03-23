@@ -11,7 +11,8 @@ class ComponentList extends Component {
 		  images: { png: 'https://deckofcardsapi.com/static/img/JD.png' },
 		  value: '12',
 		},
-		deck_id: null
+		deck_id: null,
+		result: ''
 	}
 
 	componentWillMount() {
@@ -44,10 +45,13 @@ class ComponentList extends Component {
 			card.value = parseInt(card.value, 10);
 				if (prevCard < card.value) {
 					console.log('win (' + card.value + ' > ' + prevCard + ')')
+					this.setState({ result: 'You win! (' + card.value + ' > ' + prevCard + ')'});
 				} else if (prevCard === card.value) {
 					console.log('equal (' + card.value + ' = ' + prevCard + ')')
+					this.setState({ result: 'Equal card! (' + card.value + ' = ' + prevCard + ')'});
 				} else {
 					console.log('lose (' + card.value + ' < ' + prevCard + ')')
+					this.setState({ result: 'You lose! (' + card.value + ' < ' + prevCard + ')'});
 				}
 				this.setState({ card: card })
 				console.log(card.value)
@@ -83,10 +87,13 @@ class ComponentList extends Component {
 			card.value = parseInt(card.value, 10);
 				if (prevCard > card.value) {
 					console.log('win (' + card.value + ' < ' + prevCard + ')')
+					this.setState({ result: 'You win! (' + card.value + ' < ' + prevCard + ')'});
 				} else if (prevCard === card.value) {
 					console.log('equal (' + card.value + ' = ' + prevCard + ')')
+					this.setState({ result: 'Equal card! (' + card.value + ' = ' + prevCard + ')'});
 				} else {
 					console.log('lose (' + card.value + ' > ' + prevCard + ')')
+					this.setState({ result: 'You lose! (' + card.value + ' > ' + prevCard + ')'});
 				}
 				this.setState({ card: card })
 				console.log(card.value)
@@ -102,9 +109,9 @@ class ComponentList extends Component {
 		return (
 			<ScrollView>
 			<Card>
-				<CardSection>
-					<Text style={styles.text}>{this.state.card.value}</Text>
-				</CardSection>
+				<Text style={styles.text}>
+					{this.state.result}
+				</Text>
 
 				<CardSection>
 					<Image 
@@ -138,7 +145,7 @@ const styles = StyleSheet.create({
   text: {
   	fontSize: 22,
   	color: '#E2CF00',
-  	justifyContent: 'center'
+  	alignSelf: 'center'
   }
 });
 
